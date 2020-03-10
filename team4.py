@@ -5,9 +5,9 @@
 #     strategy_description: a string
 #     move: A function that returns 'c' or 'b'
 ####
-import random 
+import random
 
-team_name = 'Vengeful Twoface'
+team_name = 'Kidz Bop'
 strategy_name=  'heads collude, tails betray, but if they betrayed last, I betray no matter what'
 strategy_description = 'The world is cruel. And the only morality in a cruel world is chance.'
     
@@ -19,24 +19,18 @@ def move(my_history, their_history, my_score, their_score):
     Make my move.
     Returns 'c' or 'b'. 
     '''
-
-    # my_history: a string with one letter (c or b) per round that has been played with this opponent.
-    # their_history: a string of the same length as history, possibly empty.
-    # The first round between these two players is my_history[0] and their_history[0].
-    # The most recent round is my_history[-1] and their_history[-1].
-
-    # Analyze my_history and their_history and/or my_score and their_score.
-    # Decide whether to return 'c' or 'b'.
-
-    # collude on the first move:
     if len(my_history) == 0:
       return 'c'
-    # make sure that there's enough history
-    elif len(my_history) >= 1 and their_history[-1] == 'b':
-      return 'b'
-    else:
-      choices = ['c','b']
-      return random.choice(choices)
+    elif their_history[-5] == 'b' :
+      if random() < .5:
+        return 'b'
+      else:
+        return 'c'
+
+
+    
+    
+    
 
 
     
